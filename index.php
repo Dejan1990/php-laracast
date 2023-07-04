@@ -35,23 +35,25 @@
                 'releaseYear' => 2021,
                 'purchaseUrl' => 'http://localhost'
             ]
-        ];  
+        ];
 
-        function filterByAuthor($books, $author) {
-            $filteredBooks = [];
+    $filterByAuthor = function ($books, $author) {
+        $filteredBooks = [];
 
-            foreach($books as $book) {
-                if ($book['author'] === $author) {
-                    $filteredBooks[] = $book;
-                }
+        foreach ($books as $book) {
+            if ($book['author'] === $author) {
+                $filteredBooks[] = $book;
             }
-
-            return $filteredBooks;
         }
+
+        return $filteredBooks;
+    };
+
+    $filteredBooks = $filterByAuthor($books, 'Andy Weir');
     ?>
 
     <ul>
-        <?php foreach (filterByAuthor($books, 'Andy Weir') as $book): ?>
+        <?php foreach ($filteredBooks as $book): ?>
             <li>
                 <a target="_blank" href="<?= $book['purchaseUrl'] ?>">
                     <?= $book['name'] ?> (<?= $book['releaseYear'] ?>) - By <?= $book['author'] ?>
