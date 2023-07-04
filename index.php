@@ -2,7 +2,9 @@
 
 require "functions.php";
 
-$uri = $_SERVER['REQUEST_URI'];
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+
+//dd($uri);
 
 if ($uri === '/php-server/') {
     require 'controllers/index.php';
