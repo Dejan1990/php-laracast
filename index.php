@@ -16,8 +16,12 @@ if ($uri === '/php-server/') {
 }*/
 
 $routes = [
-    '/php-server/' => require 'controllers/index.php',
-    '/php-server/about' => require 'controllers/about.php',
-    '/php-server/contact' => require 'controllers/contact.php'
+    '/php-server/' => 'controllers/index.php',
+    '/php-server/about' => 'controllers/about.php',
+    '/php-server/contact' => 'controllers/contact.php'
 ];
+
+if (array_key_exists($uri, $routes)) {
+    require $routes[$uri];
+}
 
