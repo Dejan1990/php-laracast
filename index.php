@@ -9,9 +9,9 @@ $db = new Database($config['database']);
 
 $id = $_GET['id'];
 
-$query = "SELECT * FROM posts WHERE id = ?";
+$query = "SELECT * FROM posts WHERE id = :id";
 
-$posts = $db->query($query, [$id])->fetch();
+$posts = $db->query($query, [':id' => $id])->fetch(); //: before id is optional
 
 dd($posts);
 
