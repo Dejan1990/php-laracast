@@ -3,17 +3,8 @@
 class Database {
     public $connection;
 
-    public function __construct()
+    public function __construct($config)
     {
-        $config = [
-            'host' => 'database',
-            'port' => 3306,
-            'dbname' => 'laracast_demo_db',
-            'charset' => 'utf8mb4'
-        ];
-
-
-
         $dsn = 'mysql:'.http_build_query($config, '', ';');
 
         //$dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']};charset={$config['charset']}";
