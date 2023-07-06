@@ -3,14 +3,9 @@
 require "functions.php";
 require 'Database.php';
 
-$config = [
-    'host' => 'database',
-    'port' => 3306,
-    'dbname' => 'laracast_demo_db',
-    'charset' => 'utf8mb4'
-];
+$config = require "config.php";
 
-$db = new Database($config);
+$db = new Database($config['database']);
 
 $posts = $db->query("SELECT * FROM posts")->fetchAll();
 
