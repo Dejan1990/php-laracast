@@ -12,7 +12,11 @@ class Database {
             'charset' => 'utf8mb4'
         ];
 
-        $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']};charset={$config['charset']}";
+
+
+        $dsn = 'mysql:'.http_build_query($config, '', ';');
+
+        //$dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']};charset={$config['charset']}";
 
         $this->connection = new PDO($dsn, 'root', 'tiger', [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
