@@ -3,16 +3,25 @@
 require "functions.php";
 //require "router.php";
 
-// connect to our MySQL database
-$dsn = "mysql:host=database;port=3306;dbname=laracast_demo_db;user=root;password=tiger;charset=utf8mb4";
+// Connect to the database and execute a query
+class Database {
+    public function query()
+    {
+        $dsn = "mysql:host=database;port=3306;dbname=laracast_demo_db;user=root;password=tiger;charset=utf8mb4";
+        $pdo = new PDO($dsn);
+        $statement = $pdo->prepare("SELECT * FROM posts");
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
+}
 
-$pdo = new PDO($dsn);
+$db = new Database();
 
-$statement = $pdo->prepare("SELECT * FROM posts");
+$posts = $db->query();
 
-$statement->execute();
 
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
 
 //dd($posts);
 
