@@ -5,8 +5,18 @@ class Database {
 
     public function __construct()
     {
-        $dsn = "mysql:host=database;port=3306;dbname=laracast_demo_db;user=root;password=tiger;charset=utf8mb4";
-        $this->connection = new PDO($dsn);
+        $config = [
+            'host' => 'database',
+            'port' => 3306,
+            'dbname' => 'laracast_demo_db',
+            'charset' => 'utf8mb4'
+        ];
+
+        $dsn = "mysql:host={$config['host']};port={$config['port']};dbname={$config['dbname']};charset={$config['charset']}";
+
+        $this->connection = new PDO($dsn, 'root', 'tiger', [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]);
     }
 
     public function query($query)
