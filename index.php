@@ -17,15 +17,15 @@ class Database {
     {
         $statement = $this->connection->prepare($query);
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $statement;
     }
 }
 
 $db = new Database();
 
-$posts = $db->query("SELECT * FROM posts");
+$posts = $db->query("SELECT * FROM posts")->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($posts as $post) {
-    echo '<li>' . $post['title'] . '</li>';
-}
+dd($posts);
+
+
 
