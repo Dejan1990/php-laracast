@@ -6,7 +6,7 @@ $db = new Database($config['database']);
 $heading = 'Note';
 $currentUserId = 1;
 
-$note = $db->query("select * from notes where id = :id", ['id' => $_GET['id']])->fetch();
+$note = $db->query("select * from notes where id = :id", ['id' => $_GET['id']])->find();
 
 //dd($note);
 

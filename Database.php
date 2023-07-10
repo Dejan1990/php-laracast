@@ -23,7 +23,7 @@ class Database {
         return $this; // return $this -> return object itself, an instance  => Database
     }
 
-    public function fetch()
+    public function find()
     {
         return $this->statement->fetch();
     }
