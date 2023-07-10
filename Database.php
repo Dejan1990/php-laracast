@@ -23,6 +23,11 @@ class Database {
         return $this; // return $this -> return object itself, an instance  => Database
     }
 
+    public function all()
+    {
+        return $this->statement->fetchAll();
+    }
+
     public function find()
     {
         return $this->statement->fetch();
