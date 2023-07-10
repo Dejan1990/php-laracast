@@ -2,6 +2,7 @@
 
 class Database {
     public $connection;
+    public $statement; // we've effectively assigned the PDO statement to the object
 
     public function __construct($config, $username = 'root', $password = 'tiger')
     {
@@ -16,8 +17,14 @@ class Database {
 
     public function query($query, $params = [])
     {
-        $statement = $this->connection->prepare($query);
-        $statement->execute($params);
-        return $statement;
+        $this->statement = $this->connection->prepare($query);
+        $this->statement->execute($params);
+        //return $statement;
+        return $this; // return $this -> return object itself, an instance  => Database
+    }
+
+    public function fetch()
+    {
+        return $this->statement->fetch();
     }
 }
